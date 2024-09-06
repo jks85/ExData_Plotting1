@@ -4,9 +4,16 @@ install.packages(c("dplyr","lubridate"))
 library(dplyr)
 library(lubridate)
 
-# ZIP FOLDER MUST BE IN WORKING DIRECTORY
+# added code to download zip folder from web if necessary. 
+# previous code required zip folder to be in working directory
 # unzip data file folder into working directory (github clone of repo)
 
+if(!dir.exists("./exdata_data_household_power_consumption.zip"))
+{
+  url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
+  download.file(url, "exdata_data_household_power_consumption.zip")
+   
+}
 
 unzip("./exdata_data_household_power_consumption.zip",exdir = getwd())
 
